@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeMove Packers & Movers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            height: 600px;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease;
+            width: 100%;
+            height: 100%;
+        }
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .slide-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .slider-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+        .slider-nav button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        .slider-nav button.active {
+            background: white;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .prev {
+            left: 20px;
+            border-radius: 0 50% 50% 0;
+        }
+        .next {
+            right: 20px;
+            border-radius: 50% 0 0 50%;
+        }
+        
+        /* Service cards hover effect */
+        .service-card:hover {
+            transform: translateY(-10px);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Client logos section */
+        .client-logo {
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+        .client-logo:hover {
+            filter: none;
+        }
+        
+        /* FAQ accordion */
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .faq-question {
+            cursor: pointer;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-question.active + .faq-answer {
+            max-height: 200px;
+        }
+        
+        /* Contact form styling */
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header with Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="logo (2).png" alt="SafeMove Packers & Movers logo featuring a blue truck icon with moving boxes" class="h-12" />
+                <h1 class="ml-4 text-2xl font-bold text-blue-800">Eagle India</h1>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-blue-800 font-medium hover:text-blue-600">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-blue-600 font-medium">About Us</a>
+                <a href="#services" class="text-gray-600 hover:text-blue-600 font-medium">Our Services</a>
+                <a href="#clients" class="text-gray-600 hover:text-blue-600 font-medium">Our Clients</a>
+                <a href="#locations" class="text-gray-600 hover:text-blue-600 font-medium">Locations</a>
+                <a href="#faq" class="text-gray-600 hover:text-blue-600 font-medium">FAQs</a>
+                <a href="#process" class="text-gray-600 hover:text-blue-600 font-medium">Shifting Process</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-600 font-medium">Contact Us</a>
+            </nav>
+            <button class="md:hidden text-gray-700">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Slider -->
+    <div id="home" class="slider-container">
+        <div class="slider">
+            <div class="slide">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/700dca6f-27c6-42f0-bb11-fce7705e6796.png" alt="Professional moving team loading furniture onto a truck in residential neighborhood" />
+                <div class="slide-content">
+                    <h2 class="text-4xl font-bold mb-4">Stress-Free Relocation Services</h2>
+                    <p class="text-xl mb-6">Trusted by thousands of families for smooth transitions</p>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium">Get Free Quote</button>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/ce6093c2-0cfa-44ef-89d9-e5e9543215f2.png" alt="Modern warehouse facility with stacked moving boxes organized by color coding" />
+                <div class="slide-content">
+                    <h2 class="text-4xl font-bold mb-4">Secure Storage Solutions</h2>
+                    <p class="text-xl mb-6">State-of-the-art facilities with 24/7 monitoring</p>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium">Explore Options</button>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/23a9db90-a512-47f8-a898-dccc22b7daea.png" alt="Happy multicultural family in new home surrounded by moving boxes with smiling movers" />
+                <div class="slide-content">
+                    <h2 class="text-4xl font-bold mb-4">Your Belongings, Our Priority</h2>
+                    <p class="text-xl mb-6">100% insured transit with careful handling</p>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium">Start Planning</button>
+                </div>
+            </div>
+        </div>
+        <button class="slider-btn prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-btn next"><i class="fas fa-chevron-right"></i></button>
+        <div class="slider-nav">
+            <button class="active"></button>
+            <button></button>
+            <button></button>
+        </div>
+    </div>
+
+    <!-- Quick Quote Form -->
+    <div class="bg-blue-800 py-8">
+        <div class="container mx-auto px-4">
+            <form class="flex flex-col md:flex-row gap-4 items-center justify-center">
+                <div class="w-full md:w-64">
+                    <select class="w-full px-4 py-3 rounded-lg border-none">
+                        <option>Select Service</option>
+                        <option>Home Relocation</option>
+                        <option>Office Shifting</option>
+                        <option>Vehicle Transport</option>
+                        <option>Storage Solutions</option>
+                    </select>
+                </div>
+                <div class="w-full md:w-64">
+                    <input type="text" placeholder="From (City)" class="w-full px-4 py-3 rounded-lg border-none">
+                </div>
+                <div class="w-full md:w-64">
+                    <input type="text" placeholder="To (City)" class="w-full px-4 py-3 rounded-lg border-none">
+                </div>
+                <div class="w-full md:w-32">
+                    <button type="submit" class="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold px-4 py-3 rounded-lg">Get Quote</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">About SafeMove Packers & Movers</h2>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="w-full md:w-1/2">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f357d792-e18d-459f-a627-83e40719b1c3.png" alt="SafeMove moving team in uniform smiling at camera with packed truck in background, showing professionalism and friendliness" class="rounded-lg shadow-lg" />
+                </div>
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-4">Your Trusted Relocation Partner</h3>
+                    <p class="text-gray-600 mb-6">Founded in 2005, SafeMove has grown to become one of the most reliable packers and movers in the country with a network spanning 75+ locations. Our mission is to make relocation stress-free for our customers through professional service and personalized solutions.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i> <span class="text-gray-700">15+ years of trusted service</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i> <span class="text-gray-700">20,000+ successful relocations</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i> <span class="text-gray-700">200+ trained professionals</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i> <span class="text-gray-700">A+ rating with BBB</span></li>
+                    </ul>
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium">Learn More About Us</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Services Section -->
+    <section id="services" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Comprehensive Services</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">We offer complete relocation solutions tailored to your needs</p>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="service-card bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-all">
+                    <div class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-home text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Household Shifting</h3>
+                    <p class="text-gray-600">Complete packing, loading, transit and unpacking services customized for families.</p>
+                    <a href="#" class="text-blue-600 font-medium mt-4 inline-block">Know More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-all">
+                    <div class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-building text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Office Relocation</h3>
+                    <p class="text-gray-600">Minimise business downtime with our professional corporate shifting services.</p>
+                    <a href="#" class="text-blue-600 font-medium mt-4 inline-block">Know More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-all">
+                    <div class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-car text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Vehicle Transport</h3>
+                    <p class="text-gray-600">Safe and insured transportation for cars, bikes and other vehicles.</p>
+                    <a href="#" class="text-blue-600 font-medium mt-4 inline-block">Know More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+                <div class="service-card bg-white p-8 rounded-lg shadow-md text-center hover:shadow-lg transition-all">
+                    <div class="bg-blue-100 w-20 h-20 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-boxes text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Storage Solutions</h3>
+                    <p class="text-gray-600">Short-term or long-term secure storage facilities with climate control.</p>
+                    <a href="#" class="text-blue-600 font-medium mt-4 inline-block">Know More <i class="fas fa-arrow-right ml-2"></i></a>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium">View All Services</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Why Choose SafeMove</h2>
+                <p class="text-blue-200 max-w-3xl mx-auto">Our commitment to excellence sets us apart in the industry</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center px-4">
+                    <div class="bg-white w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-shield-alt text-blue-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">100% Insurance</h3>
+                    <p class="text-blue-200">Comprehensive coverage for all your goods during transit and storage.</p>
+                </div>
+                <div class="text-center px-4">
+                    <div class="bg-white w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-headset text-blue-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">24/7 Support</h3>
+                    <p class="text-blue-200">Dedicated customer care available round the clock for your queries.</p>
+                </div>
+                <div class="text-center px-4">
+                    <div class="bg-white w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-rupee-sign text-blue-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Price Transparency</h3>
+                    <p class="text-blue-200">No hidden charges - we provide detailed quotes upfront.</p>
+                </div>
+                <div class="text-center px-4">
+                    <div class="bg-white w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-award text-blue-700 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Quality Certified</h3>
+                    <p class="text-blue-200">ISO certified processes ensuring international quality standards.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Clients Section -->
+    <section id="clients" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Esteemed Clients</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Trusted by leading corporations and thousands of families nationwide</p>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
+                <div class="client-logo p-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/14119b41-99ac-4129-b3d3-d8a8040e94cc.png" alt="Logo of TechSolutions Inc, a leading technology company" class="w-full h-auto" />
+                </div>
+                <div class="client-logo p-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4d0163d9-b950-4cc0-b0cd-628427a49374.png" alt="Logo of UrbanHomes, premium real estate developers" class="w-full h-auto" />
+                </div>
+                <div class="client-logo p-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/66794b8d-694b-40b9-bc30-c182d6a06c07.png" alt="Logo of FirstBank, nationwide banking institution" class="w-full h-auto" />
+                </div>
+                <div class="client-logo p-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/9250a9d4-9ed5-429e-bc92-0e471ceb3ec2.png" alt="Logo of GlobalTech, international IT services company" class="w-full h-auto" />
+                </div>
+                <div class="client-logo p-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f99fca62-b80d-4691-93b2-b16832073748.png" alt="Logo of EduCare, chain of international schools" class="w-full h-auto" />
+                </div>
+                <div class="client-logo p-4">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/143ba7c6-f9b4-4a5f-af6d-45956973e45b.png" alt="Logo of HealthFirst, healthcare provider network" class="w-full h-auto" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Locations Section -->
+    <section id="locations" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Nationwide Network</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Serving customers across major cities with local expertise</p>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-city text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Metropolitan Cities</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Full-service locations in major urban centers:</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Mumbai</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Delhi</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Bengaluru</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Hyderabad</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Chennai</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-sun text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Tier 2 Cities</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Expanding network in developing cities:</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Pune</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Jaipur</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Kochi</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Chandigarh</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Lucknow</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-globe-asia text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">International</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">Partner network for global relocations:</p>
+                    <ul class="space-y-2">
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Dubai</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Singapore</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> London</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Sydney</li>
+                        <li class="flex items-center"><i class="fas fa-map-marker-alt text-blue-500 mr-2"></i> Toronto</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium">Find Nearest Branch</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Answers to common questions about our services</p>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="faq-item mb-6">
+                    <div class="faq-question bg-gray-100 px-6 py-4 rounded-lg flex justify-between items-center cursor-pointer">
+                        <h3 class="text-lg font-semibold text-gray-800">How do you calculate moving costs?</h3>
+                        <i class="fas fa-plus text-gray-600"></i>
+                    </div>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-600 py-4">Our pricing is based on several factors including distance, volume/weight of goods, packing materials needed, any special handling requirements (like pianos or artwork), and the services you select. We provide detailed, transparent quotes after assessing these requirements during our free consultation.</p>
+                    </div>
+                </div>
+                <div class="faq-item mb-6">
+                    <div class="faq-question bg-gray-100 px-6 py-4 rounded-lg flex justify-between items-center cursor-pointer">
+                        <h3 class="text-lg font-semibold text-gray-800">What items are prohibited from transport?</h3>
+                        <i class="fas fa-plus text-gray-600"></i>
+                    </div>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-600 py-4">For safety and legal reasons, we cannot transport hazardous materials, firearms, ammunition, explosives, flammables, perishable food items, plants, pets, or high-value items like cash, jewelry, and negotiable securities. We'll provide a complete list when you book with us.</p>
+                    </div>
+                </div>
+                <div class="faq-item mb-6">
+                    <div class="faq-question bg-gray-100 px-6 py-4 rounded-lg flex justify-between items-center cursor-pointer">
+                        <h3 class="text-lg font-semibold text-gray-800">Can I pack my belongings myself?</h3>
+                        <i class="fas fa-plus text-gray-600"></i>
+                    </div>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-600 py-4">Yes, you can pack your items yourself, though we recommend using our professional packing services for fragile and valuable items as our expertise ensures maximum protection during transit. Self-packed items will still be handled carefully but may not qualify for full insurance coverage.</p>
+                    </div>
+                </div>
+                <div class="faq-item mb-6">
+                    <div class="faq-question bg-gray-100 px-6 py-4 rounded-lg flex justify-between items-center cursor-pointer">
+                        <h3 class="text-lg font-semibold text-gray-800">How much advance notice do you need?</h3>
+                        <i class="fas fa-plus text-gray-600"></i>
+                    </div>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-600 py-4">We recommend booking at least 2-4 weeks in advance, especially during peak moving seasons (summer months). However, we may be able to accommodate last-minute requests depending on availability. Emergency relocation services are available with priority surcharge.</p>
+                    </div>
+                </div>
+                <div class="faq-item mb-6">
+                    <div class="faq-question bg-gray-100 px-6 py-4 rounded-lg flex justify-between items-center cursor-pointer">
+                        <h3 class="text-lg font-semibold text-gray-800">What payment methods do you accept?</h3>
+                        <i class="fas fa-plus text-gray-600"></i>
+                    </div>
+                    <div class="faq-answer px-6">
+                        <p class="text-gray-600 py-4">We accept cash, bank transfers, credit/debit cards (Visa, MasterCard, American Express), digital wallets, and can generate GST invoices for corporate clients. A deposit is required at booking with the balance due before unloading at destination.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shifting Process Section -->
+    <section id="process" class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Stress-Free Shifting Process</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Simple steps for a seamless relocation experience</p>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="relative w-full max-w-4xl">
+                    <!-- Timeline Connector -->
+                    <div class="absolute left-8 md:left-1/2 h-full -translate-x-4 top-0 w-0.5 bg-blue-400"></div>
+                    
+                    <!-- Step 1 -->
+                    <div class="flex flex-col md:flex-row mb-12 items-center">
+                        <div class="hidden md:flex md:w-1/2"></div>
+                        <div class="relative w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold mb-4 md:mb-0 md:-ml-8 z-10">
+                            1
+                        </div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-3">Free Consultation</h3>
+                                <p class="text-gray-600">Discuss your requirements with our expert via call, chat or in-person visit to determine scope and receive a transparent quote.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 2 -->
+                    <div class="flex flex-col md:flex-row mb-12 items-center">
+                        <div class="md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-3">Booking Confirmation</h3>
+                                <p class="text-gray-600">Confirm your moving date by signing the agreement and making the booking deposit to secure your slot.</p>
+                            </div>
+                        </div>
+                        <div class="relative w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold mb-4 md:mb-0 md:-mr-8 z-10">
+                            2
+                        </div>
+                        <div class="hidden md:flex md:w-1/2"></div>
+                    </div>
+                    
+                    <!-- Step 3 -->
+                    <div class="flex flex-col md:flex-row mb-12 items-center">
+                        <div class="hidden md:flex md:w-1/2"></div>
+                        <div class="relative w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold mb-4 md:mb-0 md:-ml-8 z-10">
+                            3
+                        </div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-3">Pre-Move Survey</h3>
+                                <p class="text-gray-600">Our team conducts a detailed inventory survey to assess packing requirements and plan logistics efficiently.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 4 -->
+                    <div class="flex flex-col md:flex-row mb-12 items-center">
+                        <div class="md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-3">Packing Day</h3>
+                                <p class="text-gray-600">Professional packers arrive with high-quality materials to carefully pack, label and document all items systematically.</p>
+                            </div>
+                        </div>
+                        <div class="relative w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold mb-4 md:mb-0 md:-mr-8 z-10">
+                            4
+                        </div>
+                        <div class="hidden md:flex md:w-1/2"></div>
+                    </div>
+                    
+                    <!-- Step 5 -->
+                    <div class="flex flex-col md:flex-row mb-12 items-center">
+                        <div class="hidden md:flex md:w-1/2"></div>
+                        <div class="relative w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold mb-4 md:mb-0 md:-ml-8 z-10">
+                            5
+                        </div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-3">Loading & Transit</h3>
+                                <p class="text-gray-600">Secure loading of goods onto our GPS-equipped vehicles with real-time tracking accessible throughout transit.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Step 6 -->
+                    <div class="flex flex-col md:flex-row mb-12 items-center">
+                        <div class="md:w-1/2 md:pr-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-3">Delivery & Unpacking</h3>
+                                <p class="text-gray-600">Careful unloading and unpacking at destination with placement assistance as per your preference.</p>
+                            </div>
+                        </div>
+                        <div class="relative w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold mb-4 md:mb-0 md:-mr-8 z-10">
+                            6
+                        </div>
+                        <div class="hidden md:flex md:w-1/2"></div>
+                    </div>
+                    
+                    <!-- Step 7 -->
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="hidden md:flex md:w-1/2"></div>
+                        <div class="relative w-12 h-12 md:w-16 md:h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl font-bold mb-4 md:mb-0 md:-ml-8 z-10">
+                            7
+                        </div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <div class="bg-white p-6 rounded-lg shadow-md">
+                                <h3 class="text-xl font-semibold text-gray-800 mb-3">Post-Move Support</h3>
+                                <p class="text-gray-600">Comprehensive support including damage claims (if any), unpacking assistance, and waste disposal services.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-blue-800 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">What Our Customers Say</h2>
+                <p class="text-blue-200 max-w-3xl mx-auto">Real experiences from happy customers who chose SafeMove</p>
+                <div class="w-20 h-1 bg-yellow-400 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white text-gray-800 p-8 rounded-lg shadow-lg">
+                    <div class="flex mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/593f1be2-1d94-43ae-945d-66fe9dcf4e50.png" alt="Portrait of Rajesh Patel, satisfied customer from Mumbai" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-semibold">Rajesh Patel</h4>
+                            <p class="text-blue-600 text-sm">Mumbai to Bengaluru Shift</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Exceptional service from start to finish. The team handled our antique furniture with such care and the unpacking service saved us days of work. Will recommend SafeMove to everyone!"</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="bg-white text-gray-800 p-8 rounded-lg shadow-lg">
+                    <div class="flex mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/cd5c6853-bdad-4f09-8219-273937697997.png" alt="Portrait of Priya Sharma, corporate relocation client from Delhi" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-semibold">Priya Sharma</h4>
+                            <p class="text-blue-600 text-sm">Office Relocation</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"We relocated our 50-employee office with SafeMove and experienced zero downtime. Their IT equipment handling specialists ensured all systems were set up and running before work resumed Monday morning."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                <div class="bg-white text-gray-800 p-8 rounded-lg shadow-lg">
+                    <div class="flex mb-4">
+                        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/b5891814-e767-4dd7-ad7f-697b88bc6293.png" alt="Portrait of Aditya Nair, international relocation client" class="w-12 h-12 rounded-full mr-4" />
+                        <div>
+                            <h4 class="font-semibold">Aditya Nair</h4>
+                            <p class="text-blue-600 text-sm">International Relocation</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-4">"Moving to Singapore was stressful until we hired SafeMove. Their international partners provided seamless customs clearance and our belongings arrived before we did! Truly a global standard service."</p>
+                    <div class="flex text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button class="bg-yellow-400 hover:bg-yellow-500 text-blue-900 font-bold px-8 py-3 rounded-lg">More Testimonials</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Contact SafeMove</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto">Reach out for inquiries, quotes, or support</p>
+                <div class="w-20 h-1 bg-blue-600 mx-auto"></div>
+            </div>
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="w-full lg:w-1/2">
+                    <form class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-gray-700 mb-2">Name</label>
+                                <input type="text" id="name" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-gray-700 mb-2">Email</label>
+                                <input type="email" id="email" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-gray-700 mb-2">Phone</label>
+                            <input type="tel" id="phone" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                            <select id="subject" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500">
+                                <option>Select Subject</option>
+                                <option>Domestic Relocation</option>
+                                <option>International Relocation</option>
+                                <option>Office Shifting</option>
+                                <option>Vehicle Transport</option>
+                                <option>Storage Services</option>
+                                <option>Other Inquiry</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="5" class="form-input w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"></textarea>
+                        </div>
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium w-full">Send Message</button>
+                    </form>
+                </div>
+                <div class="w-full lg:w-1/2">
+                    <div class="bg-gray-100 p-8 rounded-lg shadow-md h-full">
+                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">Get In Touch</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Corporate Office</h4>
+                                    <p class="text-gray-600">SafeMove Packers & Movers Pvt. Ltd.<br>
+                                    123 Business Tower, Sector 18, Gurugram<br>
+                                    Haryana 122022, India</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-envelope text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Email Us</h4>
+                                    <p class="text-gray-600">info@safemove.com<br>
+                                    support@safemove.com</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-phone-alt text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Call Us</h4>
+                                    <p class="text-gray-600">+91 9876543210 (Customer Care)<br>
+                                    +91 9876543211 (Emergency)</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-lg mr-4">
+                                    <i class="fas fa-clock text-blue-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-1">Working Hours</h4>
+                                    <p class="text-gray-600">Monday - Saturday: 8:00 AM - 8:00 PM<br>
+                                    Sunday: 10:00 AM - 4:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-blue-400 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-500">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-pink-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-pink-700">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-blue-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-800">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div class="w-full h-96">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8ebcb4e4-3704-4550-80d8-1bd6d84d3dfc.png" alt="Map showing SafeMove headquarters location in Gurugram with pins marking regional offices across India" class="w-full h-full object-cover" />
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/44efb43d-973e-484a-8eea-b2fe5a88946f.png" alt="SafeMove Packers & Movers logo in white version" class="h-12 mb-6" />
+                    <p class="mb-6">India's most trusted relocation service provider with pan-India presence and international partners.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-white">Home</a></li>
+                        <li><a href="#" class="hover:text-white">About Us</a></li>
+                        <li><a href="#" class="hover:text-white">Services</a></li>
+                        <li><a href="#" class="hover:text-white">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-6">Services</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-white">House Shifting</a></li>
+                        <li><a href="#" class="hover:text-white">Office Relocation</a></li>
+                        <li><a href="#" class="hover:text-white">Vehicle Transport</a></li>
+                        <li><a href="#" class="hover:text-white">Storage Solutions</a></li>
+                        <li><a href="#" class="hover:text-white">International Moving</a></li>
+                        <li><a href="#" class="hover:text-white">Packing Services</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white text-lg font-semibold mb-6">Newsletter</h4>
+                    <p class="mb-4">Subscribe to get offers and relocation tips</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your Email" class="px-4 py-3 rounded-l-lg w-full bg-gray-800 text-white border-none focus:outline-none">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-4 rounded-r-lg">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div class="mt-8">
+                        <h4 class="text-white text-lg font-semibold mb-4">Download App</h4>
+                        <div class="flex space-x-3">
+                            <a href="#">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f8cebfcc-3818-478e-a379-e062651d99a0.png" alt="Download SafeMove app from Google Play Store" class="h-12" />
+                            </a>
+                            <a href="#">
+                                <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/286c8fc8-48d7-4f0f-a17a-1e8c8fd82aea.png" alt="Download SafeMove app from Apple App Store" class="h-12" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p>© 2023 SafeMove Packers & Movers. All Rights Reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                    <a href="#" class="hover:text-white">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Slider functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Image slider
+            const slider = document.querySelector('.slider');
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+            const navBtns = document.querySelectorAll('.slider-nav button');
+            
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            function goToSlide(n) {
+                slider.style.transform = `translateX(-${n * 100}%)`;
+                currentSlide = n;
+                
+                // Update navigation buttons
+                navBtns.forEach((btn, i) => {
+                    btn.classList.toggle('active', i === currentSlide);
+                });
+            }
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                goToSlide(currentSlide);
+            }
+            
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                goToSlide(currentSlide);
+            }
+            
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+            
+            navBtns.forEach((btn, i) => {
+                btn.addEventListener('click', () => goToSlide(i));
+            });
+            
+            // Auto slide change every 5 seconds
+            setInterval(nextSlide, 5000);
+            
+            // FAQ accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const isActive = question.classList.contains('active');
+                    
+                    // Close all FAQ answers first
+                    faqQuestions.forEach(q => {
+                        q.classList.remove('active');
+                        q.querySelector('i').classList.remove('fa-minus');
+                        q.querySelector('i').classList.add('fa-plus');
+                    });
+                    
+                    // If the clicked question wasn't active, open it
+                    if (!isActive) {
+                        question.classList.add('active');
+                        question.querySelector('i').classList.remove('fa-plus');
+                        question.querySelector('i').classList.add('fa-minus');
+                    }
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Mobile menu toggle (placeholder functionality)
+            document.querySelector('.md\\:hidden button').addEventListener('click', function() {
+                alert('Mobile menu functionality would be implemented here');
+            });
+        });
+    </script>
+</body>
+</html>
+
